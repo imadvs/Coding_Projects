@@ -320,14 +320,9 @@ public:
 
         for (clsBankClient Client : vClients)
         {
-
             TotalBalances += Client.GetAccountBalance();
         }
-
         return TotalBalances;
-
     }
 };
-
-
 #endif //PROJECT1L4BANKEXTENSION2_CLSBANKCLIENT_H

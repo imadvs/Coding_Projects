@@ -23,12 +23,10 @@ public:
 
     clsString()
     {
-
         value = "";
     }
     clsString(string value)
     {
-
         value = value;
     }
 
@@ -50,7 +48,6 @@ public:
 
     static short countwords(string s1)
     {
-
         string delim = " "; // delimiter
         short counter = 0;
         short pos = 0;
@@ -64,7 +61,6 @@ public:
             {
                 counter++;
             }
-
             //erase() until positon and move to next word.
             s1.erase(0, pos + delim.length());
         }
@@ -73,9 +69,7 @@ public:
         {
             counter++; // it counts the last word of the string.
         }
-
         return counter;
-
     }
     short countwords()
     {
@@ -118,7 +112,6 @@ public:
     }
     void lowerfirstletterofeachword()
     {
-
         // no need to return value , this function will directly update the object value
         value = lowerfirstletterofeachword(value);
     }
@@ -186,17 +179,13 @@ public:
 
     static short  countcapitalletters(string s1)
     {
-
         short counter = 0;
 
         for (short i = 0; i < s1.length(); i++)
         {
-
             if (isupper(s1[i]))
                 counter++;
-
         }
-
         return counter;
     }
     short  countcapitalletters()
@@ -206,17 +195,13 @@ public:
 
     static short  countsmallletters(string s1)
     {
-
         short counter = 0;
 
         for (short i = 0; i < s1.length(); i++)
         {
-
             if (islower(s1[i]))
                 counter++;
-
         }
-
         return counter;
     }
     short  countsmallletters()
@@ -226,9 +211,7 @@ public:
 
     static short  countspecificletter(string s1, char letter, bool matchcase = true)
     {
-
         short counter = 0;
-
         for (short i = 0; i < s1.length(); i++)
         {
 
@@ -242,9 +225,7 @@ public:
                 if (tolower(s1[i]) == tolower(letter))
                     counter++;
             }
-
         }
-
         return counter;
     }
     short  countspecificletter( char letter, bool matchcase = true)
@@ -385,19 +366,15 @@ public:
 
     static string replaceword(string s1, string stringtoreplace, string srepalceto, bool matchcase = true)
     {
-
         vector<string> vstring = Split(s1, " ");
-
         for (string& s : vstring)
         {
-
             if (matchcase)
             {
                 if (s == stringtoreplace)
                 {
                     s = srepalceto;
                 }
-
             }
             else
             {
@@ -405,11 +382,8 @@ public:
                 {
                     s = srepalceto;
                 }
-
             }
-
         }
-
         return joinstring(vstring, " ");
     }
     string replaceword(string stringtoreplace, string srepalceto)
@@ -420,7 +394,6 @@ public:
     static string removepunctuations(string s1)
     {
         string s2 = "";
-
         for (short i = 0; i < s1.length(); i++)
         {
             if (!ispunct(s1[i]))

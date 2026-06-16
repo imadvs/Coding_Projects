@@ -151,8 +151,4 @@ class clsInputValidate
         return S1;
     }
 };
-
-
-
-
 #endif //PROJECT1L4BANKEXTENSION2_CLSINPUTVALIDATE_H

@@ -1,63 +1,42 @@
-//
-// Created by imad on 4/29/26.
-//
-
-#ifndef PROJECT1L4BANKEXTENSION2_CLSMAINSCREEN_H
-#define PROJECT1L4BANKEXTENSION2_CLSMAINSCREEN_H
-
-
 #pragma once
 #include <iostream>
-#include <iomanip>
-#include <limits>
-
 #include "clsScreen.h"
 #include "clsInputValidate.h"
 #include "clsClientListScreen.h"
 #include "clsAddNewClientScreen.h"
+#include "clsDeleteClientScreen.h"
+#include "clsUpdateClientScreen.h"
+#include "clsFindClientScreen.h"
+#include "clsTransactionsScreen.h"
+#include "clsManageUsersScreen.h"
+#include "clsLoginScreen.h"
+#include "Global.h"
 
 using namespace std;
 
-class clsMainScreen : protected clsScreen
+class clsMainScreen :protected clsScreen
 {
+
+
 private:
-
-    enum enMainMenueOptions
-    {
-        eListClients = 1,
-        eAddNewClient = 2,
-        eDeleteClient = 3,
-        eUpdateClient = 4,
-        eFindClient = 5,
-        eShowTransactionsMenue = 6,
-        eManageUsers = 7,
-        eExit = 8
+    enum enMainMenueOptions {
+        eListClients = 1, eAddNewClient = 2, eDeleteClient = 3,
+        eUpdateClient = 4, eFindClient = 5, eShowTransactionsMenue = 6,
+        eManageUsers = 7, eExit = 8
     };
-
-    static void _ClearScreen()
-    {
-#ifdef _WIN32
-        system("cls");
-#else
-        cout << "\033[2J\033[H";
-#endif
-    }
 
     static short _ReadMainMenueOption()
     {
         cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 8]? ";
-        short Choice = clsInputValidate::ReadShortNumberBetween(1,8,"Enter Number between 1 to 8? ");
+        short Choice = clsInputValidate::ReadShortNumberBetween(1, 8, "Enter Number between 1 to 8? ");
         return Choice;
     }
 
-    static void _GoBackToMainMenue()
+    static  void _GoBackToMainMenue()
     {
-        cout << setw(37) << left << ""
-             << "\n\tPress Enter to go back to Main Menue...\n";
+        cout << setw(37) << left << "" << "\n\tPress any key to go back to Main Menue...\n";
 
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cin.get();
-
+        system("pause>0");
         ShowMainMenue();
     }
 
@@ -75,83 +54,105 @@ private:
 
     static void _ShowDeleteClientScreen()
     {
-        cout << "\nDelete Client Screen Will be here...\n";
+        //cout << "\nDelete Client Screen Will be here...\n";
+        clsDeleteClientScreen::ShowDeleteClientScreen();
     }
 
     static void _ShowUpdateClientScreen()
     {
-        cout << "\nUpdate Client Screen Will be here...\n";
+        //cout << "\nUpdate Client Screen Will be here...\n";
+        clsUpdateClientScreen::ShowUpdateClientScreen();
     }
 
     static void _ShowFindClientScreen()
     {
-        cout << "\nFind Client Screen Will be here...\n";
+        // cout << "\nFind Client Screen Will be here...\n";
+        clsFindClientScreen::ShowFindClientScreen();
     }
 
     static void _ShowTransactionsMenue()
     {
-        cout << "\nTransactions Menue Will be here...\n";
+        // cout << "\nTransactions Menue Will be here...\n";
+        clsTransactionsScreen::ShowTransactionsMenue();
     }
 
     static void _ShowManageUsersMenue()
     {
-        cout << "\nUsers Menue Will be here...\n";
+        // cout << "\nUsers Menue Will be here...\n";
+        clsManageUsersScreen::ShowManageUsersMenue();
     }
 
-    static void _ShowEndScreen()
+  /*  static void _ShowEndScreen()
     {
         cout << "\nEnd Screen Will be here...\n";
+
+    }*/
+
+    static void _Logout()
+    {
+        CurrentUser = clsUser::Find("", "");
+      //then it will go back to main function.
     }
+
 
     static void _PerfromMainMenueOption(enMainMenueOptions MainMenueOption)
     {
         switch (MainMenueOption)
         {
         case enMainMenueOptions::eListClients:
-            _ClearScreen();
+        {
+            system("cls");
             _ShowAllClientsScreen();
             _GoBackToMainMenue();
             break;
+        }
         case enMainMenueOptions::eAddNewClient:
-            _ClearScreen();
+            system("cls");
             _ShowAddNewClientsScreen();
             _GoBackToMainMenue();
             break;
+
         case enMainMenueOptions::eDeleteClient:
-            _ClearScreen();
+            system("cls");
             _ShowDeleteClientScreen();
             _GoBackToMainMenue();
             break;
+
         case enMainMenueOptions::eUpdateClient:
-            _ClearScreen();
+            system("cls");
             _ShowUpdateClientScreen();
             _GoBackToMainMenue();
             break;
+
         case enMainMenueOptions::eFindClient:
-            _ClearScreen();
+            system("cls");
             _ShowFindClientScreen();
             _GoBackToMainMenue();
             break;
+
         case enMainMenueOptions::eShowTransactionsMenue:
-            _ClearScreen();
+            system("cls");
             _ShowTransactionsMenue();
+            _GoBackToMainMenue();
             break;
+
         case enMainMenueOptions::eManageUsers:
-            _ClearScreen();
+            system("cls");
             _ShowManageUsersMenue();
+            _GoBackToMainMenue();
             break;
+
         case enMainMenueOptions::eExit:
-            _ClearScreen();
-            _ShowEndScreen();
-            // Login();
+            system("cls");
+            _Logout();
             break;
         }
     }
 
 public:
-
     static void ShowMainMenue()
     {
+        system("cls");
         _DrawScreenHeader("\t\tMain Screen");
 
         cout << setw(37) << left << "" << "===========================================\n";
@@ -167,9 +168,7 @@ public:
         cout << setw(37) << left << "" << "\t[8] Logout.\n";
         cout << setw(37) << left << "" << "===========================================\n";
 
-        _PerfromMainMenueOption(static_cast<enMainMenueOptions>(_ReadMainMenueOption())
-        );
+        _PerfromMainMenueOption((enMainMenueOptions)_ReadMainMenueOption());
     }
 };
 
-#endif // PROJECT1L4BANKEXTENSION2_CLSMAINSCREEN_H

@@ -47,14 +47,11 @@ private:
         cout << "\nPassword    : " << Client.GetPinCode();
         cout << "\nBalance     : " << Client.GetAccountBalance();
         cout << "\n___________________\n";
-
     }
 
 public:
-
     static void ShowAddNewClientScreen()
     {
-
         _DrawScreenHeader("\t  Add New Client Screen");
 
         string AccountNumber = "";
@@ -68,12 +65,9 @@ public:
         }
 
         clsBankClient NewClient = clsBankClient::GetAddNewClientObject(AccountNumber);
-
-
         _ReadClientInfo(NewClient);
 
         clsBankClient::enSaveResults SaveResult;
-
         SaveResult = NewClient.Save();
 
         switch (SaveResult)
@@ -88,21 +82,13 @@ public:
         {
             cout << "\nError account was not saved because it's Empty";
             break;
-
         }
         case clsBankClient::enSaveResults::svFaildAccountNumberExists:
         {
             cout << "\nError account was not saved because account number is used!\n";
             break;
-
         }
         }
     }
-
-
-
 };
-
-
-
 #endif //PROJECT1L4BANKEXTENSION2_CLSADDNEWCLIENTSCREEN_H

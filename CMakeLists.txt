@@ -19,6 +19,9 @@ add_executable(ATMSystem
         include/clsScreen.h
         include/clsClientListScreen.h
         include/clsAddNewClientScreen.h
+        include/clsDeleteClientScreen.h
+        include/clsUpdateClientScreen.h
+        include/clsFindClientScreen.h
 )
 
 target_compile_definitions(ATMSystem PRIVATE

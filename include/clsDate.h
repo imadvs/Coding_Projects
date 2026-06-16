@@ -77,7 +77,6 @@ public:
         short maxDay = NumberOfDaysInAMonth(Date.GetMonth(), Date.GetYear());
         if (Date.GetDay() > maxDay)
             Date.SetDay(maxDay);
-
         return Date;
     }
 
@@ -306,5 +305,4 @@ public:
         for (int i = 1; i <= 12; i++) PrintMonthCalendar(i, _Year);
     }
 };
-
 #endif //PROJECT1L4BANKEXTENSION2_CLSDATE_H
