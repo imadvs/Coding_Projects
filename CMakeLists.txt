@@ -19,6 +19,8 @@ add_executable(ATMSystem
         include/clsScreen.h
         include/clsClientListScreen.h
         include/clsAddNewClientScreen.h
+        src/imad.cpp
+        src/imad.h
 )
 
 target_compile_definitions(ATMSystem PRIVATE
