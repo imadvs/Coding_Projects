@@ -22,6 +22,11 @@ add_executable(ATMSystem
         include/clsDeleteClientScreen.h
         include/clsUpdateClientScreen.h
         include/clsFindClientScreen.h
+        "include/Transactions Screen/clsTransactionsScreen.h"
+        include/Manage_Users_Screen/clsManageUsersScreen.h
+        "include/Transactions Screen/clsDepositScreen.h"
+        "include/Transactions Screen/clsWithdrawScreen.h"
+        "include/Transactions Screen/clsTotalBalancesScreen.h"
 )
 
 target_compile_definitions(ATMSystem PRIVATE
