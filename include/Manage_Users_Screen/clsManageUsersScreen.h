@@ -17,10 +17,9 @@
 #include "clsFindUserScreen.h"
 
 using namespace std;
-
 class clsManageUsersScreen :protected clsScreen
-{
 
+{
 private:
     enum enManageUsersMenueOptions {
         eListUsers = 1, eAddNewUser = 2, eDeleteUser = 3,
@@ -125,14 +124,11 @@ private:
             //do nothing here the main screen will handle it :-) ;
         }
         }
-
     }
 
 public:
-
     static void ShowManageUsersMenue()
     {
-
         system("cls");
         _DrawScreenHeader("\t Manage Users Screen");
 
@@ -149,7 +145,6 @@ public:
 
         _PerformManageUsersMenueOption((enManageUsersMenueOptions)ReadManageUsersMenueOption());
     }
-
 };
 
 #endif //PROJECT1L4BANKEXTENSION2_MANAGE_USERS_SCREEN_H

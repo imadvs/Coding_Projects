@@ -17,16 +17,24 @@ add_executable(ATMSystem
         include/clsBankClient.h
         include/clsMainScreen.h
         include/clsScreen.h
-        include/clsClientListScreen.h
-        include/clsAddNewClientScreen.h
-        include/clsDeleteClientScreen.h
-        include/clsUpdateClientScreen.h
-        include/clsFindClientScreen.h
+        "include/Clients screens/clsClientListScreen.h"
+        "include/Clients screens/clsAddNewClientScreen.h"
+        "include/Clients screens/clsDeleteClientScreen.h"
+        "include/Clients screens/clsUpdateClientScreen.h"
+        "include/Clients screens/clsFindClientScreen.h"
         "include/Transactions Screen/clsTransactionsScreen.h"
         include/Manage_Users_Screen/clsManageUsersScreen.h
         "include/Transactions Screen/clsDepositScreen.h"
         "include/Transactions Screen/clsWithdrawScreen.h"
         "include/Transactions Screen/clsTotalBalancesScreen.h"
+        include/Manage_Users_Screen/clsListUsersScreen.h
+        include/Manage_Users_Screen/clsUser.h
+        include/Manage_Users_Screen/clsAddNewUserScreen.h
+        include/Manage_Users_Screen/clsDeleteUserScreen.h
+        include/Manage_Users_Screen/clsUpdateUserScreen.h
+        include/Manage_Users_Screen/clsFindUserScreen.h
+        include/Global.h
+        include/clsLoginScreen.h
 )
 
 target_compile_definitions(ATMSystem PRIVATE
