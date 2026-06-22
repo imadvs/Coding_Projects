@@ -35,14 +35,14 @@ private:
 
     static void _GoBackToManageUsersMenue()
     {
-        cout << "\n\nPress any key to go back to Manage Users Menue...";
-        system("pause>0");
+        cout << "\n\nPress any key to go back to Manage Users.txt Menue...";
+        _PauseScreen();
         ShowManageUsersMenue();
     }
 
     static void _ShowListUsersScreen()
     {
-        //cout << "\nList Users Screen Will Be Here.\n";
+        //cout << "\nList Users.txt Screen Will Be Here.\n";
         clsListUsersScreen::ShowUsersList();
 
     }
@@ -80,7 +80,7 @@ private:
         {
         case enManageUsersMenueOptions::eListUsers:
         {
-            system("cls");
+            _ClearScreen();
             _ShowListUsersScreen();
             _GoBackToManageUsersMenue();
             break;
@@ -88,7 +88,7 @@ private:
 
         case enManageUsersMenueOptions::eAddNewUser:
         {
-            system("cls");
+            _ClearScreen();
             _ShowAddNewUserScreen();
             _GoBackToManageUsersMenue();
             break;
@@ -96,7 +96,7 @@ private:
 
         case enManageUsersMenueOptions::eDeleteUser:
         {
-            system("cls");
+            _ClearScreen();
             _ShowDeleteUserScreen();
             _GoBackToManageUsersMenue();
             break;
@@ -104,7 +104,7 @@ private:
 
         case enManageUsersMenueOptions::eUpdateUser:
         {
-            system("cls");
+            _ClearScreen();
             _ShowUpdateUserScreen();
             _GoBackToManageUsersMenue();
             break;
@@ -112,8 +112,7 @@ private:
 
         case enManageUsersMenueOptions::eFindUser:
         {
-            system("cls");
-
+            _ClearScreen();
             _ShowFindUserScreen();
             _GoBackToManageUsersMenue();
             break;
@@ -129,13 +128,18 @@ private:
 public:
     static void ShowManageUsersMenue()
     {
-        system("cls");
-        _DrawScreenHeader("\t Manage Users Screen");
+        if (!CheckAccessRights(clsUser::enPermissions::pManageUsers))
+        {
+            return;// this will exit the function and it will not continue
+        }
+
+        _ClearScreen();
+        _DrawScreenHeader("\t Manage Users.txt Screen");
 
         cout << setw(37) << left << "" << "===========================================\n";
-        cout << setw(37) << left << "" << "\t\t  Manage Users Menue\n";
+        cout << setw(37) << left << "" << "\t\t  Manage Users.txt Menue\n";
         cout << setw(37) << left << "" << "===========================================\n";
-        cout << setw(37) << left << "" << "\t[1] List Users.\n";
+        cout << setw(37) << left << "" << "\t[1] List Users.txt.\n";
         cout << setw(37) << left << "" << "\t[2] Add New User.\n";
         cout << setw(37) << left << "" << "\t[3] Delete User.\n";
         cout << setw(37) << left << "" << "\t[4] Update User.\n";

@@ -6,6 +6,10 @@
 #include <vector>
 #include <fstream>
 
+#ifndef USERS_FILE_PATH
+#define USERS_FILE_PATH "data/Users.txt"
+#endif
+
 using namespace std;
 class clsUser : public clsPerson
 {
@@ -31,7 +35,6 @@ private:
 
     static string _ConverUserObjectToLine(clsUser User, string Seperator = "#//#")
     {
-
         string UserRecord = "";
         UserRecord += User.GetFirstName() + Seperator;
         UserRecord += User.GetLastName() + Seperator;
@@ -51,7 +54,7 @@ private:
         vector <clsUser> vUsers;
 
         fstream MyFile;
-        MyFile.open("Users.txt", ios::in);//read Mode
+        MyFile.open(USERS_FILE_PATH, ios::in);//read Mode
 
         if (MyFile.is_open())
         {
@@ -79,7 +82,7 @@ private:
     {
 
         fstream MyFile;
-        MyFile.open("Users.txt", ios::out);//overwrite
+        MyFile.open(USERS_FILE_PATH, ios::out);//overwrite
 
         string DataLine;
 
@@ -132,7 +135,7 @@ private:
     void _AddDataLineToFile(string  stDataLine)
     {
         fstream MyFile;
-        MyFile.open("Users.txt", ios::out | ios::app);
+        MyFile.open(USERS_FILE_PATH, ios::out | ios::app);
 
         if (MyFile.is_open())
         {
@@ -155,6 +158,7 @@ public:
         eAll = -1, pListClients = 1, pAddNewClient = 2, pDeleteClient = 4,
         pUpdateClients = 8, pFindClient = 16, pTranactions = 32, pManageUsers = 64
     };
+
 
     clsUser(enMode Mode, string FirstName, string LastName,
         string Email, string Phone, string UserName, string Password,
@@ -188,7 +192,6 @@ public:
         _UserName = UserName;
     }
 
-
     void SetPassword(string Password)
     {
         _Password = Password;
@@ -212,7 +215,7 @@ public:
     static clsUser Find(string UserName)
     {
         fstream MyFile;
-        MyFile.open("Users.txt", ios::in);//read Mode
+        MyFile.open(USERS_FILE_PATH, ios::in);//read Mode
 
         if (MyFile.is_open())
         {
@@ -238,7 +241,7 @@ public:
     {
 
         fstream MyFile;
-        MyFile.open("Users.txt", ios::in);//read Mode
+        MyFile.open(USERS_FILE_PATH, ios::in);//read Mode
 
         if (MyFile.is_open())
         {
@@ -345,6 +348,16 @@ public:
     }
 
 
+    bool CheckAccessPermission(enPermissions Permission)
+    {
+        if (this->GetPermissions() == enPermissions::eAll)
+            return true;
+
+        if ((Permission & this->GetPermissions()) == Permission)
+            return true;
+        else
+            return false;
+
+    }
 
 };
-

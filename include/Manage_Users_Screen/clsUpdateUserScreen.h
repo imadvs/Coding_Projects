@@ -111,7 +111,7 @@ private:
             Permissions += clsUser::enPermissions::pTranactions;
         }
 
-        cout << "\nManage Users? y/n? ";
+        cout << "\nManage Users.txt? y/n? ";
         cin >> Answer;
         if (Answer == 'y' || Answer == 'Y')
         {

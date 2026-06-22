@@ -39,4 +39,5 @@ add_executable(ATMSystem
 
 target_compile_definitions(ATMSystem PRIVATE
         CLIENTS_FILE_PATH="${CMAKE_SOURCE_DIR}/data/Clients.txt"
+        USERS_FILE_PATH="${CMAKE_SOURCE_DIR}/data/Users.txt"
 )

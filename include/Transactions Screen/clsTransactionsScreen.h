@@ -43,7 +43,7 @@ private:
    static void _GoBackToTransactionsMenue()
     {
         cout << "\n\nPress any key to go back to Transactions Menue...";
-        system("pause>0");
+        _PauseScreen();
         ShowTransactionsMenue();
     }
 
@@ -53,7 +53,7 @@ private:
         {
             case enTransactionsMenueOptions::eDeposit:
             {
-                system("cls");
+                _ClearScreen();
                 _ShowDepositScreen();
                 _GoBackToTransactionsMenue();
                 break;
@@ -61,7 +61,7 @@ private:
 
             case enTransactionsMenueOptions::eWithdraw:
             {
-                system("cls");
+                _ClearScreen();
                 _ShowWithdrawScreen();
                 _GoBackToTransactionsMenue();
                 break;
@@ -70,7 +70,7 @@ private:
 
             case enTransactionsMenueOptions::eShowTotalBalance:
             {
-                system("cls");
+                _ClearScreen();
                 _ShowTotalBalancesScreen();
                 _GoBackToTransactionsMenue();
                 break;
@@ -86,7 +86,12 @@ private:
 public:
     static void ShowTransactionsMenue()
     {
-        system("cls");
+        if (!CheckAccessRights(clsUser::enPermissions::pTranactions))
+        {
+            return;// this will exit the function and it will not continue
+        }
+
+        _ClearScreen();
         _DrawScreenHeader("\tTransactions Screen");
 
         cout << setw(37) << left << "" << "===========================================\n";

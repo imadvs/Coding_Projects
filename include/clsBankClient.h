@@ -6,6 +6,10 @@
 #include <vector>
 #include <fstream>
 
+#ifndef CLIENTS_FILE_PATH
+#define CLIENTS_FILE_PATH "data/Clients.txt"
+#endif
+
 using namespace std;
 class clsBankClient : public clsPerson
 {
@@ -48,7 +52,7 @@ private:
         vector <clsBankClient> vClients;
 
         fstream MyFile;
-        MyFile.open("Clients.txt", ios::in);//read Mode
+        MyFile.open(CLIENTS_FILE_PATH, ios::in);//read Mode
 
         if (MyFile.is_open())
         {
@@ -76,7 +80,7 @@ private:
     {
 
         fstream MyFile;
-        MyFile.open("Clients.txt", ios::out);//overwrite
+        MyFile.open(CLIENTS_FILE_PATH, ios::in);//read Mode
 
         string DataLine;
 
@@ -129,7 +133,7 @@ private:
     void _AddDataLineToFile(string  stDataLine)
     {
         fstream MyFile;
-        MyFile.open("Clients.txt", ios::out | ios::app);
+        MyFile.open(CLIENTS_FILE_PATH, ios::in);//read Mode
 
         if (MyFile.is_open())
         {
@@ -201,7 +205,7 @@ public:
     static clsBankClient Find(string AccountNumber)
     {
         fstream MyFile;
-        MyFile.open("Clients.txt", ios::in);//read Mode
+        MyFile.open(CLIENTS_FILE_PATH, ios::in);//read Mode
 
         if (MyFile.is_open())
         {
@@ -225,7 +229,7 @@ public:
     static clsBankClient Find(string AccountNumber, string PinCode)
     {
         fstream MyFile;
-        MyFile.open("Clients.txt", ios::in);//read Mode
+        MyFile.open(CLIENTS_FILE_PATH, ios::in);//read Mode
 
         if (MyFile.is_open())
         {

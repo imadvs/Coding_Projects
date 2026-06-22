@@ -36,7 +36,7 @@ private:
     {
         cout << setw(37) << left << "" << "\n\tPress any key to go back to Main Menue...\n";
 
-        system("pause>0");
+        _PauseScreen();
         ShowMainMenue();
     }
 
@@ -101,49 +101,49 @@ private:
         {
         case enMainMenueOptions::eListClients:
         {
-            system("cls");
+            _ClearScreen();
             _ShowAllClientsScreen();
             _GoBackToMainMenue();
             break;
         }
         case enMainMenueOptions::eAddNewClient:
-            system("cls");
+            _ClearScreen();
             _ShowAddNewClientsScreen();
             _GoBackToMainMenue();
             break;
 
         case enMainMenueOptions::eDeleteClient:
-            system("cls");
+            _ClearScreen();
             _ShowDeleteClientScreen();
             _GoBackToMainMenue();
             break;
 
         case enMainMenueOptions::eUpdateClient:
-            system("cls");
+            _ClearScreen();
             _ShowUpdateClientScreen();
             _GoBackToMainMenue();
             break;
 
         case enMainMenueOptions::eFindClient:
-            system("cls");
+            _ClearScreen();
             _ShowFindClientScreen();
             _GoBackToMainMenue();
             break;
 
         case enMainMenueOptions::eShowTransactionsMenue:
-            system("cls");
+            _ClearScreen();
             _ShowTransactionsMenue();
             _GoBackToMainMenue();
             break;
 
         case enMainMenueOptions::eManageUsers:
-            system("cls");
+            _ClearScreen();
             _ShowManageUsersMenue();
             _GoBackToMainMenue();
             break;
 
         case enMainMenueOptions::eExit:
-            system("cls");
+            _ClearScreen();
             _Logout();
             break;
         }
@@ -152,7 +152,7 @@ private:
 public:
     static void ShowMainMenue()
     {
-        system("cls");
+        _ClearScreen();
         _DrawScreenHeader("\t\tMain Screen");
 
         cout << setw(37) << left << "" << "===========================================\n";
@@ -164,7 +164,7 @@ public:
         cout << setw(37) << left << "" << "\t[4] Update Client Info.\n";
         cout << setw(37) << left << "" << "\t[5] Find Client.\n";
         cout << setw(37) << left << "" << "\t[6] Transactions.\n";
-        cout << setw(37) << left << "" << "\t[7] Manage Users.\n";
+        cout << setw(37) << left << "" << "\t[7] Manage Users.txt.\n";
         cout << setw(37) << left << "" << "\t[8] Logout.\n";
         cout << setw(37) << left << "" << "===========================================\n";
 

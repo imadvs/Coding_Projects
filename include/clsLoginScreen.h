@@ -47,7 +47,7 @@ private :
 public:
     static void ShowLoginScreen()
     {
-        system("cls");
+        _ClearScreen();
         _DrawScreenHeader("\t  Login Screen");
         _Login();
     }
