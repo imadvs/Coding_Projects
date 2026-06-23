@@ -75,7 +75,6 @@ private:
 
     static void _PerformManageUsersMenueOption(enManageUsersMenueOptions ManageUsersMenueOption)
     {
-
         switch (ManageUsersMenueOption)
         {
         case enManageUsersMenueOptions::eListUsers:

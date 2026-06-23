@@ -14,7 +14,6 @@ using namespace std;
 class clsBankClient : public clsPerson
 {
 private:
-
     enum enMode { EmptyMode = 0, UpdateMode = 1, AddNewMode = 2 };
     enMode _Mode;
 
@@ -30,7 +29,6 @@ private:
 
         return clsBankClient(enMode::UpdateMode, vClientData[0], vClientData[1], vClientData[2],
             vClientData[3], vClientData[4], vClientData[5], stod(vClientData[6]));
-
     }
 
     static string _ConverClientObjectToLine(clsBankClient Client, string Seperator = "#//#")
@@ -48,7 +46,6 @@ private:
 
     static  vector <clsBankClient> _LoadClientsDataFromFile()
     {
-
         vector <clsBankClient> vClients;
 
         fstream MyFile;
@@ -56,37 +53,28 @@ private:
 
         if (MyFile.is_open())
         {
-
             string Line;
 
 
             while (getline(MyFile, Line))
             {
-
                 clsBankClient Client = _ConvertLinetoClientObject(Line);
 
                 vClients.push_back(Client);
             }
-
             MyFile.close();
-
         }
-
         return vClients;
-
     }
 
     static void _SaveCleintsDataToFile(vector <clsBankClient> vClients)
     {
-
         fstream MyFile;
         MyFile.open(CLIENTS_FILE_PATH, ios::in);//read Mode
 
         string DataLine;
-
         if (MyFile.is_open())
         {
-
             for (clsBankClient C : vClients)
             {
                 if (C.MarkedForDeleted() == false)
@@ -94,15 +82,10 @@ private:
                     //we only write records that are not marked for delete.  
                     DataLine = _ConverClientObjectToLine(C);
                     MyFile << DataLine << endl;
-
                 }
-
             }
-
             MyFile.close();
-
         }
-
     }
 
     void _Update()
@@ -117,16 +100,12 @@ private:
                 C = *this;
                 break;
             }
-
         }
-
         _SaveCleintsDataToFile(_vClients);
-
     }
 
     void _AddNew()
     {
-
         _AddDataLineToFile(_ConverClientObjectToLine(*this));
     }
 
@@ -137,12 +116,9 @@ private:
 
         if (MyFile.is_open())
         {
-
             MyFile << stDataLine << endl;
-
             MyFile.close();
         }
-
     }
 
     static clsBankClient _GetEmptyClientObject()
@@ -151,19 +127,15 @@ private:
     }
 
 public:
-
-
     clsBankClient(enMode Mode, string FirstName, string LastName,
         string Email, string Phone, string AccountNumber, string PinCode,
         float AccountBalance) :
         clsPerson(FirstName, LastName, Email, Phone)
-
     {
         _Mode = Mode;
         _AccountNumber = AccountNumber;
         _PinCode = PinCode;
         _AccountBalance = AccountBalance;
-
     }
 
     bool IsEmpty()
@@ -201,7 +173,6 @@ public:
         return _AccountBalance;
     }
 
-
     static clsBankClient Find(string AccountNumber)
     {
         fstream MyFile;
@@ -219,10 +190,8 @@ public:
                     return Client;
                 }
             }
-
             MyFile.close();
         }
-
         return _GetEmptyClientObject();
     }
 
@@ -243,7 +212,6 @@ public:
                     return Client;
                 }
             }
-
             MyFile.close();
         }
         return _GetEmptyClientObject();

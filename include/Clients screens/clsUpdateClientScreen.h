@@ -5,7 +5,6 @@
 #ifndef PROJECT1L4BANKEXTENSION2_CLSUPDATECLIENTSCREEN_H
 #define PROJECT1L4BANKEXTENSION2_CLSUPDATECLIENTSCREEN_H
 
-
 #pragma once
 #include <iostream>
 #include "../clsScreen.h"
