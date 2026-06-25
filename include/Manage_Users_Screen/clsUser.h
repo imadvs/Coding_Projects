@@ -222,7 +222,6 @@ public:
                     return User;
                 }
             }
-
             MyFile.close();
         }
         return _GetEmptyUserObject();
@@ -289,9 +288,7 @@ public:
             }
         }
         _SaveUsersDataToFile(_vUsers);
-
         *this = _GetEmptyUserObject();
-
         return true;
     }
 

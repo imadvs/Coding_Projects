@@ -14,7 +14,6 @@
 
 class clsClientListScreen:protected clsScreen
 {
-
 private:
    static void PrintClientRecordLine(clsBankClient Client)
     {

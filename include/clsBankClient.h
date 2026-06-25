@@ -55,7 +55,6 @@ private:
         {
             string Line;
 
-
             while (getline(MyFile, Line))
             {
                 clsBankClient Client = _ConvertLinetoClientObject(Line);
