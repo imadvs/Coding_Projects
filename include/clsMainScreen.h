@@ -168,7 +168,7 @@ public:
         cout << setw(37) << left << "" << "\t[8] Logout.\n";
         cout << setw(37) << left << "" << "===========================================\n";
 
-        _PerfromMainMenueOption((enMainMenueOptions)_ReadMainMenueOption());
+        _PerfromMainMenueOption(static_cast<enMainMenueOptions>(_ReadMainMenueOption()));
     }
 };
 
