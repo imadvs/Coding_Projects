@@ -5,6 +5,7 @@
 #include "clsString.h"
 #include <vector>
 #include <fstream>
+#include "clsDate.h"
 
 #ifndef USERS_FILE_PATH
 #define USERS_FILE_PATH "data/Users.txt"
@@ -21,6 +22,16 @@ private:
     int _Permissions;
 
     bool _MarkedForDelete = false;
+
+    string _PrepareLogInRecord( string Seperator = "#//#")
+    {
+        string LoginRecord = "";
+        LoginRecord += clsDate::GetSystemDateTimeString() + Seperator;
+        LoginRecord += GetUserName() + Seperator;
+        LoginRecord += GetPassword() + Seperator;
+        LoginRecord += to_string(GetPermissions());
+        return LoginRecord;
+    }
 
     static clsUser _ConvertLinetoUserObject(string Line, string Seperator = "#//#")
     {
@@ -302,7 +313,6 @@ public:
         return _LoadUsersDataFromFile();
     }
 
-
     bool CheckAccessPermission(enPermissions Permission)
     {
         if (this->GetPermissions() == enPermissions::eAll)
@@ -312,5 +322,18 @@ public:
             return true;
         else
             return false;
+    }
+
+    void RegisterLogIn()
+    {
+        string stDataLine = _PrepareLogInRecord();
+
+        fstream MyFile;
+        MyFile.open("LoginRegister.txt", ios::out | ios::app);
+        if (MyFile.is_open())
+        {
+            MyFile << stDataLine << endl;
+            MyFile.close();
+        }
     }
 };

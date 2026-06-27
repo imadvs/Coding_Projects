@@ -35,6 +35,7 @@ add_executable(ATMSystem
         include/Manage_Users_Screen/clsFindUserScreen.h
         include/Global.h
         include/clsLoginScreen.h
+        include/clsLogScreen.h
 )
 
 target_compile_definitions(ATMSystem PRIVATE

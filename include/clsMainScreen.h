@@ -2,6 +2,8 @@
 #include <iostream>
 #include "clsScreen.h"
 #include "clsInputValidate.h"
+#include "clsLoginScreen.h"
+#include "clsLoginScreen.h"
 #include "Clients screens/clsClientListScreen.h"
 #include "Clients screens/clsAddNewClientScreen.h"
 #include "Clients screens/clsDeleteClientScreen.h"
@@ -10,19 +12,19 @@
 #include "Transactions Screen/clsTransactionsScreen.h"
 #include "Manage_Users_Screen/clsManageUsersScreen.h"
 #include "clsLoginScreen.h"
+#include "clsLogScreen.h"
 #include "Global.h"
+#include "clsLogScreen.h"
 
 using namespace std;
 
 class clsMainScreen :protected clsScreen
 {
-
-
 private:
     enum enMainMenueOptions {
         eListClients = 1, eAddNewClient = 2, eDeleteClient = 3,
         eUpdateClient = 4, eFindClient = 5, eShowTransactionsMenue = 6,
-        eManageUsers = 7, eExit = 8
+        eManageUsers = 7, eLog = 8, eExit = 9
     };
 
     static short _ReadMainMenueOption()
@@ -80,6 +82,11 @@ private:
     {
         // cout << "\nUsers Menue Will be here...\n";
         clsManageUsersScreen::ShowManageUsersMenue();
+    }
+
+    static  void _ShowLogScreen()
+    {
+        clsLogScreen::ShowLogScreen();
     }
 
   /*  static void _ShowEndScreen()
@@ -142,6 +149,9 @@ private:
             _GoBackToMainMenue();
             break;
 
+            case enMainMenueOptions::eLog:
+            _ClearScreen();
+
         case enMainMenueOptions::eExit:
             _ClearScreen();
             _Logout();
@@ -165,7 +175,8 @@ public:
         cout << setw(37) << left << "" << "\t[5] Find Client.\n";
         cout << setw(37) << left << "" << "\t[6] Transactions.\n";
         cout << setw(37) << left << "" << "\t[7] Manage Users.txt.\n";
-        cout << setw(37) << left << "" << "\t[8] Logout.\n";
+        cout << setw(37) << left << "" << "\t[8] Login Register.\n";
+        cout << setw(37) << left << "" << "\t[9] Logout.\n";
         cout << setw(37) << left << "" << "===========================================\n";
 
         _PerfromMainMenueOption(static_cast<enMainMenueOptions>(_ReadMainMenueOption()));
