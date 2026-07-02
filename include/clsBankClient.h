@@ -111,7 +111,7 @@ private:
     void _AddDataLineToFile(string  stDataLine)
     {
         fstream MyFile;
-        MyFile.open(CLIENTS_FILE_PATH, ios::in);//read Mode
+        MyFile.open(CLIENTS_FILE_PATH, ios::out | ios::app);
 
         if (MyFile.is_open())
         {
