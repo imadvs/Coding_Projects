@@ -36,6 +36,7 @@ add_executable(ATMSystem
         include/Global.h
         include/clsLoginScreen.h
         include/clsLoginRegisterScreen.h
+        "include/Transactions Screen/clsTransferScreen.h"
 )
 
 target_compile_definitions(ATMSystem PRIVATE

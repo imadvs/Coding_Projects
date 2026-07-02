@@ -53,10 +53,8 @@ private:
 
     static int _ReadPermissionsToSet()
     {
-
         int Permissions = 0;
         char Answer = 'n';
-
 
         cout << "\nDo you want to give full access? y/n? ";
         cin >> Answer;
@@ -71,8 +69,6 @@ private:
         cin >> Answer;
         if (Answer == 'y' || Answer == 'Y')
         {
-
-
             Permissions += clsUser::enPermissions::pListClients;
         }
 
@@ -118,15 +114,17 @@ private:
             Permissions += clsUser::enPermissions::pManageUsers;
         }
 
-        return Permissions;
+        cout << "\nShowLoginRegisterScreen? y/n";
+        cin >> Answer;
+        if (Answer == 'y' || Answer == 'Y')
+            Permissions += clsUser::enPermissions::pLoginRegister;
 
+        return Permissions;
     }
 
 public:
-
     static void ShowUpdateUserScreen()
     {
-
         _DrawScreenHeader("\tUpdate User Screen");
 
         string UserName = "";
@@ -151,10 +149,8 @@ public:
 
         if (Answer == 'y' || Answer == 'Y')
         {
-
             cout << "\n\nUpdate User Info:";
             cout << "\n____________________\n";
-
 
             _ReadUserInfo(User1);
 
@@ -175,14 +171,9 @@ public:
             {
                 cout << "\nError User was not saved because it's Empty";
                 break;
-
             }
-
             }
-
         }
-
     }
 };
-
 #endif //PROJECT1L4BANKEXTENSION2_CLSUPDATEUSERSCREEN_H
