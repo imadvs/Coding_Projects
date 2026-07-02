@@ -21,7 +21,7 @@ private:
         cout << "\n___________________";
         cout << "\nFull Name:" << Client.FullName();
         cout << "\nAccount Number: " << Client.AccountNumber();
-        cout << "\nBalance: " << Client.GetTotalBalances();
+        cout << "\nBalance: " << Client.GetAccountBalance();
         cout << "\n___________________\n";
     }
 

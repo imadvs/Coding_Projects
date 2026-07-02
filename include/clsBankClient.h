@@ -69,7 +69,7 @@ private:
     static void _SaveCleintsDataToFile(vector <clsBankClient> vClients)
     {
         fstream MyFile;
-        MyFile.open(CLIENTS_FILE_PATH, ios::in);//read Mode
+        MyFile.open(CLIENTS_FILE_PATH, ios::out);
 
         string DataLine;
         if (MyFile.is_open())
@@ -301,6 +301,7 @@ public:
     {
         _AccountBalance -= Amount;
         Save();
+        return true;
     }
 
     static double GetTotalBalances()
