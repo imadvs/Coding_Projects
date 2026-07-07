@@ -9,7 +9,8 @@
 
 #include <iostream>
 #include "clsScreen.h"
-#include "clsBankClient.h"
+#include "clsPerson.h"
+#include "../Clients screens/clsBankClient.h"
 #include "clsInputValidate.h"
 
 class clsTransferScreen : protected clsScreen
@@ -72,7 +73,7 @@ public:
         cin >> Answer;
         if (Answer == 'Y' || Answer == 'y')
         {
-            if (SourceClient.Transfer(Amount, DestinationClient))
+            if (SourceClient.Transfer(Amount, DestinationClient, CurrentUser.GetUserName()))
             {
                 cout << "\nTransfer done successfully\n";
             }
@@ -85,5 +86,4 @@ public:
         _PrintClient(DestinationClient);
     }
 };
-
 #endif //PROJECT1L4BANKEXTENSION2_CLSTRANSFERSCREEN_H

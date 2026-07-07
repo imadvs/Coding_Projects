@@ -14,7 +14,7 @@ add_executable(ATMSystem
         include/clsInputValidate.h
         include/clsInputValidate.h
         include/clsPerson.h
-        include/clsBankClient.h
+        "include/Clients screens/clsBankClient.h"
         include/clsMainScreen.h
         include/clsScreen.h
         "include/Clients screens/clsClientListScreen.h"
@@ -37,6 +37,7 @@ add_executable(ATMSystem
         include/clsLoginScreen.h
         include/clsLoginRegisterScreen.h
         "include/Transactions Screen/clsTransferScreen.h"
+        "include/Transactions Screen/clsTransferLogScreen.h"
 )
 
 target_compile_definitions(ATMSystem PRIVATE

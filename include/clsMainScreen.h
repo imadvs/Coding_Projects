@@ -2,8 +2,6 @@
 #include <iostream>
 #include "clsScreen.h"
 #include "clsInputValidate.h"
-#include "clsLoginScreen.h"
-#include "clsLoginScreen.h"
 #include "Clients screens/clsClientListScreen.h"
 #include "Clients screens/clsAddNewClientScreen.h"
 #include "Clients screens/clsDeleteClientScreen.h"
@@ -11,10 +9,8 @@
 #include "Clients screens/clsFindClientScreen.h"
 #include "Transactions Screen/clsTransactionsScreen.h"
 #include "Manage_Users_Screen/clsManageUsersScreen.h"
-#include "clsLoginScreen.h"
 #include "clsLoginRegisterScreen.h"
 #include "Global.h"
-#include "clsLoginRegisterScreen.h"
 
 using namespace std;
 

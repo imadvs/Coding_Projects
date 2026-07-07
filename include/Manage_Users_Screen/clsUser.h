@@ -24,16 +24,6 @@ private:
 
     bool _MarkedForDelete = false;
 
-    string _PrepareLogInRecord( string Seperator = "#//#")
-    {
-        string LoginRecord = "";
-        LoginRecord += clsDate::GetSystemDateTimeString() + Seperator;
-        LoginRecord += GetUserName() + Seperator;
-        LoginRecord += GetPassword() + Seperator;
-        LoginRecord += to_string(GetPermissions());
-        return LoginRecord;
-    }
-
     static clsUser _ConvertLinetoUserObject(string Line, string Seperator = "#//#")
     {
         vector<string> vUserData;
@@ -138,32 +128,36 @@ private:
         return clsUser(enMode::EmptyMode, "", "", "", "", "", "", 0);
     }
 
+    string _PrepareLogInRecord( string Seperator = "#//#")
+    {
+        string LoginRecord = "";
+        LoginRecord += clsDate::GetSystemDateTimeString() + Seperator;
+        LoginRecord += GetUserName() + Seperator;
+        LoginRecord += GetPassword() + Seperator;
+        LoginRecord += to_string(GetPermissions());
+        return LoginRecord;
+    }
+
+    void _RegisterLogIn()
+    {
+        string stDataLine = _PrepareLogInRecord();
+
+        fstream MyFile;
+        MyFile.open("LoginRegister.txt", ios::out | ios::app);
+        if (MyFile.is_open())
+        {
+            MyFile << stDataLine << endl;
+            MyFile.close();
+        }
+    }
+
 public:
     enum enPermissions {
         eAll = -1, pListClients = 1, pAddNewClient = 2, pDeleteClient = 4,
         pUpdateClients = 8, pFindClient = 16, pTranactions = 32, pManageUsers = 64, pLoginRegister = 128,
+        pTransferRegister = 256,
     };
 
-    struct stLoginRegisterRecord
-    {
-        string DateTime;
-        string UserName;
-        string Password;
-        int Permissions;
-    };
-
-    static stLoginRegisterRecord _ConvertLoginRegisterLineToRecord(string Line, string Seperator = "#//#")
-    {
-        stLoginRegisterRecord LoginRegisterRecord;
-
-        vector <string> LoginRegisterDataLine = clsString::Split(Line, Seperator);
-        LoginRegisterRecord.DateTime = LoginRegisterDataLine[0];
-        LoginRegisterRecord.UserName = LoginRegisterDataLine[1];
-        LoginRegisterRecord.Password = LoginRegisterDataLine[2];
-        LoginRegisterRecord.Permissions = stoi(LoginRegisterDataLine[3]);
-
-        return LoginRegisterRecord;
-    }
 
     clsUser(enMode Mode, string FirstName, string LastName,
         string Email, string Phone, string UserName, string Password,
@@ -345,17 +339,25 @@ public:
             return false;
     }
 
-    void RegisterLogIn()
+    struct stLoginRegisterRecord
     {
-        string stDataLine = _PrepareLogInRecord();
+        string DateTime;
+        string UserName;
+        string Password;
+        int Permissions;
+    };
 
-        fstream MyFile;
-        MyFile.open("LoginRegister.txt", ios::out | ios::app);
-        if (MyFile.is_open())
-        {
-            MyFile << stDataLine << endl;
-            MyFile.close();
-        }
+    static stLoginRegisterRecord ConvertLoginRegisterLineToRecord(string Line, string Seperator = "#//#")
+    {
+        stLoginRegisterRecord LoginRegisterRecord;
+
+        vector <string> LoginRegisterDataLine = clsString::Split(Line, Seperator);
+        LoginRegisterRecord.DateTime = LoginRegisterDataLine[0];
+        LoginRegisterRecord.UserName = LoginRegisterDataLine[1];
+        LoginRegisterRecord.Password = LoginRegisterDataLine[2];
+        LoginRegisterRecord.Permissions = stoi(LoginRegisterDataLine[3]);
+
+        return LoginRegisterRecord;
     }
 
     static  vector <stLoginRegisterRecord> GetLoginRegisterList()
@@ -371,7 +373,7 @@ public:
             stLoginRegisterRecord LoginRegisterRecord;
             while (getline(MyFile, Line))
             {
-                LoginRegisterRecord = _ConvertLoginRegisterLineToRecord(Line);
+                LoginRegisterRecord = ConvertLoginRegisterLineToRecord(Line);
 
                 vLoginRegisterRecord.push_back(LoginRegisterRecord);
             }

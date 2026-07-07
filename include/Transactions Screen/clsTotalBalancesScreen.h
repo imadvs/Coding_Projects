@@ -8,7 +8,7 @@
 #pragma once
 #include <iostream>
 #include "clsScreen.h"
-#include "clsBankClient.h"
+#include "../Clients screens/clsBankClient.h"
 #include <iomanip>
 #include "clsUtil.h"
 

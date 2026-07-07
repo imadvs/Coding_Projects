@@ -52,14 +52,9 @@ private :
 
     } while (LoginFaild);
 
-    CurrentUser.RegisterLogIn();
+    CurrentUser._RegisterLogIn();
     clsMainScreen::ShowMainMenue();
     return true;
-}
-
-    void _Log()
-{
-
 }
 
 public:

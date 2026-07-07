@@ -2,8 +2,8 @@
 // Created by imad on 27/06/2026.
 //
 
-#ifndef PROJECT1L4BANKEXTENSION2_SHOWLOGSCREEN_H
-#define PROJECT1L4BANKEXTENSION2_SHOWLOGSCREEN_H
+#ifndef PROJECT1_L4_BANKEXTENSION2_SHOWLOGSCREEN_H
+#define PROJECT1_L4_BANKEXTENSION2_SHOWLOGSCREEN_H
 
 #pragma once
 #include "clsScreen.h"
@@ -32,7 +32,7 @@ public:
         vector <clsUser::stLoginRegisterRecord> vLoginRegisterRecord = clsUser::GetLoginRegisterList();
 
         string Title = "\tLogin Register List Screen";
-        string SubTitle =  "\t\t(" + to_string(vLoginRegisterRecord.size()) + ") Record(s).";
+        string SubTitle = "\t\t(" + to_string(vLoginRegisterRecord.size()) + ") Record(s).";
 
         _DrawScreenHeader(Title, SubTitle);
 
@@ -58,4 +58,4 @@ public:
         cout << "_________________________________________\n" << endl;
     }
 };
-#endif //PROJECT1L4BANKEXTENSION2_SHOWLOGSCREEN_H
+#endif //PROJECT1_L4_BANKEXTENSION2_SHOWLOGSCREEN_H
