@@ -6,6 +6,7 @@
 #include <vector>
 #include <fstream>
 #include "clsDate.h"
+#include "clsUtil.h"
 
 
 #ifndef USERS_FILE_PATH
@@ -30,7 +31,7 @@ private:
         vUserData = clsString::Split(Line, Seperator);
 
         return clsUser(enMode::UpdateMode, vUserData[0], vUserData[1], vUserData[2],
-            vUserData[3], vUserData[4], vUserData[5], stoi(vUserData[6]));
+            vUserData[3], vUserData[4], clsUtil::DecryptText(vUserData[5], 2), stoi(vUserData[6]));
     }
 
     static string _ConverUserObjectToLine(clsUser User, string Seperator = "#//#")
@@ -41,7 +42,7 @@ private:
         UserRecord += User.GetEmail() + Seperator;
         UserRecord += User.GetPhone() + Seperator;
         UserRecord += User.GetUserName() + Seperator;
-        UserRecord += User.GetPassword() + Seperator;
+        UserRecord += clsUtil::EncryptText(User.GetPassword(), 2) + Seperator;
         UserRecord += to_string(User.GetPermissions());
         return UserRecord;
     }
@@ -133,23 +134,11 @@ private:
         string LoginRecord = "";
         LoginRecord += clsDate::GetSystemDateTimeString() + Seperator;
         LoginRecord += GetUserName() + Seperator;
-        LoginRecord += GetPassword() + Seperator;
+        LoginRecord += clsUtil::EncryptText(GetPassword(), 2) + Seperator;
         LoginRecord += to_string(GetPermissions());
         return LoginRecord;
     }
 
-    void _RegisterLogIn()
-    {
-        string stDataLine = _PrepareLogInRecord();
-
-        fstream MyFile;
-        MyFile.open("LoginRegister.txt", ios::out | ios::app);
-        if (MyFile.is_open())
-        {
-            MyFile << stDataLine << endl;
-            MyFile.close();
-        }
-    }
 
 public:
     enum enPermissions {
@@ -266,6 +255,7 @@ public:
             {
                 return enSaveResults::svFaildEmptyObject;
             }
+            break;
         }
 
         case enMode::UpdateMode:
@@ -292,6 +282,7 @@ public:
             break;
         }
         }
+        return enSaveResults::svFaildEmptyObject;
     }
 
     static bool IsUserExist(string UserName)
@@ -339,6 +330,19 @@ public:
             return false;
     }
 
+    void RegisterLogIn()
+    {
+        string stDataLine = _PrepareLogInRecord();
+
+        fstream MyFile;
+        MyFile.open("LoginRegister.txt", ios::out | ios::app);
+        if (MyFile.is_open())
+        {
+            MyFile << stDataLine << endl;
+            MyFile.close();
+        }
+    }
+
     struct stLoginRegisterRecord
     {
         string DateTime;
@@ -354,7 +358,7 @@ public:
         vector <string> LoginRegisterDataLine = clsString::Split(Line, Seperator);
         LoginRegisterRecord.DateTime = LoginRegisterDataLine[0];
         LoginRegisterRecord.UserName = LoginRegisterDataLine[1];
-        LoginRegisterRecord.Password = LoginRegisterDataLine[2];
+        LoginRegisterRecord.Password = clsUtil::DecryptText(LoginRegisterDataLine[2], 2);
         LoginRegisterRecord.Permissions = stoi(LoginRegisterDataLine[3]);
 
         return LoginRegisterRecord;

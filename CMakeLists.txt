@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project("Project 1 - Utility Library")
+project("P03_Bank System")
 
 set(CMAKE_CXX_STANDARD 14)
 

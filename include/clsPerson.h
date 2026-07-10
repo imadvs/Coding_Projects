@@ -28,7 +28,7 @@ public:
         _Phone = Phone;
     }
 
-    string SetFirstName(string FirstName)
+    void SetFirstName(string FirstName)
     {
         _FirstName = FirstName;
     }
