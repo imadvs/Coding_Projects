@@ -38,6 +38,9 @@ add_executable(ATMSystem
         include/clsLoginRegisterScreen.h
         "include/Transactions Screen/clsTransferScreen.h"
         "include/Transactions Screen/clsTransferLogScreen.h"
+        include/InterfaceCommunication.h
+        "include/P04 Currency Exchange/clsCurrency.h"
+        "include/P04 Currency Exchange/main1 Currency.h"
 )
 
 target_compile_definitions(ATMSystem PRIVATE
