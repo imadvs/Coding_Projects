@@ -41,6 +41,7 @@ add_executable(ATMSystem
         include/InterfaceCommunication.h
         "include/P04 Currency Exchange/clsCurrency.h"
         "include/P04 Currency Exchange/main1 Currency.h"
+        "include/P04 Currency Exchange/clsCurrencyExchangeMainScreen.h"
 )
 
 target_compile_definitions(ATMSystem PRIVATE

@@ -19,7 +19,6 @@ static void _PrintCurrency(clsCurrency Currency)
     cout << "\nRate(1$) = : " << Currency.Rate();
 
     cout << "\n_____________________________\n";
-
 }
 
 int main()
