@@ -151,7 +151,7 @@ public:
 
     static clsCurrency FindByCode(string CurrencyCode)
     {
-        CurrencyCode = clsString::UpperAllString(CurrencyCode);
+        CurrencyCode = clsString::upperallstring(CurrencyCode);
 
         fstream MyFile;
         MyFile.open("Currencies.txt", ios::in); //read Mode
@@ -176,7 +176,7 @@ public:
 
     static clsCurrency FindByCountry(string Country)
     {
-        Country = clsString::UpperAllString(Country);
+        Country = clsString::upperallstring(Country);
 
         fstream MyFile;
         MyFile.open("Currencies.txt", ios::in); //read Mode
@@ -187,7 +187,7 @@ public:
             while (getline(MyFile, Line))
             {
                 clsCurrency Currency = _ConvertLinetoCurrencyObject(Line);
-                if (clsString::UpperAllString(Currency.Country()) == Country)
+                if (clsString::upperallstring(Currency.Country()) == Country)
                 {
                     MyFile.close();
                     return Currency;
