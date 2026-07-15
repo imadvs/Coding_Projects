@@ -7,7 +7,6 @@
 
 #pragma once
 
-#include<iostream>
 #include<string>
 #include "clsString.h"
 #include <vector>
@@ -99,9 +98,9 @@ private:
         _SaveCurrencyDataToFile(_vCurrencys);
     }
 
-    static clsCurrency _GetEmptyCurrencyObject()
+    static clsCurrency GetEmptyCurrencyObject()
     {
-        return clsCurrency(enMode::EmptyMode, "", "", "", 0);
+        return {enMode::EmptyMode, "", "", "", 0};
     }
 
 public:
@@ -172,7 +171,7 @@ public:
             MyFile.close();
         }
 
-        return _GetEmptyCurrencyObject();
+        return GetEmptyCurrencyObject();
     }
 
     static clsCurrency FindByCountry(string Country)
@@ -196,7 +195,7 @@ public:
             }
             MyFile.close();
         }
-        return _GetEmptyCurrencyObject();
+        return GetEmptyCurrencyObject();
     }
 
     static bool IsCurrencyExist(string CurrencyCode)

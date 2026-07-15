@@ -37,6 +37,8 @@ public:
         return value;
     }
 
+    static initializer_list<char> UpperAllString(const string& string);
+
     static short length(string s1)
     {
         return s1.length();
