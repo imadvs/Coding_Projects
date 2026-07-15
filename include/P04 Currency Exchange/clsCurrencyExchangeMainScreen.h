@@ -12,6 +12,7 @@
 #include "clsInputValidate.h"
 #include <iomanip>
 #include "clsCurrenciesListScreen.h"
+#include "clsFindCurrencyScreen.h"
 
 using namespace std;
 
@@ -48,16 +49,20 @@ private:
     static void _ShowFindCurrencyScreen()
     {
         cout << "\nFind Currency Screen Will Be Here.\n";
+        clsFindCurrencyScreen::ShowFindCurrencyScreen();
+        _GoBackToCurrenciesMenue();
     }
 
     static void _ShowUpdateCurrencyRateScreen()
     {
         cout << "\nUpdate Currency Rate Screen Will Be Here.\n";
+        _GoBackToCurrenciesMenue();
     }
 
     static void _ShowCurrencyCalculatorScreen()
     {
         cout << "\nCurrency Calculator Screen Will Be Here.\n";
+        _GoBackToCurrenciesMenue();
     }
 
     static void _PerformCurrenciesMainMenueOptions(enCurrenciesMainMenueOptions CurrenciesMainMenueOptions)
