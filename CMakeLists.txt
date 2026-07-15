@@ -44,6 +44,7 @@ add_executable(ATMSystem
         "include/P04 Currency Exchange/clsCurrenciesListScreen.h"
         "include/P04 Currency Exchange/clsFindCurrencyScreen.h"
         "include/P04 Currency Exchange/clsUpdateCurrencyRateScreen.h"
+        "include/P04 Currency Exchange/clsCurrencyCalculatorScreen.h"
 )
 
 target_compile_definitions(ATMSystem PRIVATE
