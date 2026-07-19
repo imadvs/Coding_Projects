@@ -11,12 +11,9 @@
 #include "clsCurrency.h"
 #include "clsInputValidate.h"
 
-class clsCurrencyCalculatorScreen : protected clsScreen
-
-{
+class clsCurrencyCalculatorScreen : protected clsScreen {
 private:
-    static float _ReadAmount()
-    {
+    static float _ReadAmount() {
         cout << "\nEnter Amount to Exchange: ";
         float Amount = 0;
 
@@ -24,15 +21,13 @@ private:
         return Amount;
     }
 
-    static clsCurrency _GetCurrency(string Message)
-    {
+    static clsCurrency _GetCurrency(string Message) {
         string CurrencyCode;
         cout << Message << endl;
 
         CurrencyCode = clsInputValidate::ReadString();
 
-        while (!clsCurrency::IsCurrencyExist(CurrencyCode))
-        {
+        while (!clsCurrency::IsCurrencyExist(CurrencyCode)) {
             cout << "\nCurrency is not found, choose another one: ";
             CurrencyCode = clsInputValidate::ReadString();
         }
@@ -41,9 +36,7 @@ private:
         return Currency;
     }
 
-
-    static void _PrintCurrencyCard(clsCurrency Currency, string Title = "Currency Card:")
-    {
+    static void _PrintCurrencyCard(clsCurrency Currency, string Title = "Currency Card:") {
         cout << "\n" << Title << "\n";
         cout << "_____________________________\n";
         cout << "\nCountry       : " << Currency.Country();
@@ -53,17 +46,15 @@ private:
         cout << "\n_____________________________\n\n";
     }
 
-    static void _PrintCalculationsResults(float Amount, clsCurrency Currency1, clsCurrency Currency2)
-    {
+    static void _PrintCalculationsResults(float Amount, clsCurrency Currency1, clsCurrency Currency2) {
         _PrintCurrencyCard(Currency1, "Convert From:");
 
         float AmountInUSD = Currency1.ConvertToUSD(Amount);
 
         cout << Amount << " " << Currency1.CurrencyCode()
-            << " = " << AmountInUSD << " USD\n";
+                << " = " << AmountInUSD << " USD\n";
 
-        if (Currency2.CurrencyCode() == "USD")
-        {
+        if (Currency2.CurrencyCode() == "USD") {
             return;
         }
 
@@ -74,16 +65,14 @@ private:
         float AmountInCurrrency2 = Currency1.ConvertToOtherCurrency(Amount, Currency2);
 
         cout << Amount << " " << Currency1.CurrencyCode()
-            << " = " << AmountInCurrrency2 << " " << Currency2.CurrencyCode();
+                << " = " << AmountInCurrrency2 << " " << Currency2.CurrencyCode();
     }
 
 public:
-    static void ShowCurrencyCalculatorScreen()
-    {
+    static void ShowCurrencyCalculatorScreen() {
         char Continue = 'y';
 
-        while (Continue == 'y' || Continue == 'Y')
-        {
+        while (Continue == 'y' || Continue == 'Y') {
             system("cls");
 
             _DrawScreenHeader("\tUpdate Currency Screen");

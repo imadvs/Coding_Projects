@@ -9,7 +9,7 @@
 #include "Clients screens/clsFindClientScreen.h"
 #include "Transactions Screen/clsTransactionsScreen.h"
 #include "Manage_Users_Screen/clsManageUsersScreen.h"
-#include "clsLoginRegisterScreen.h"
+#include "Login_screens/clsLoginRegisterScreen.h"
 #include "Global.h"
 #include "P04 Currency Exchange/clsCurrencyExchangeMainScreen.h"
 

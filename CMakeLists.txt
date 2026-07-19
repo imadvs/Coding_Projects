@@ -34,8 +34,8 @@ add_executable(ATMSystem
         include/Manage_Users_Screen/clsUpdateUserScreen.h
         include/Manage_Users_Screen/clsFindUserScreen.h
         include/Global.h
-        include/clsLoginScreen.h
-        include/clsLoginRegisterScreen.h
+        include/Login_screens/clsLoginScreen.h
+        include/Login_screens/clsLoginRegisterScreen.h
         "include/Transactions Screen/clsTransferScreen.h"
         "include/Transactions Screen/clsTransferLogScreen.h"
         include/InterfaceCommunication.h

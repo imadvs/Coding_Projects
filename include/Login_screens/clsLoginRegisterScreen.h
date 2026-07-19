@@ -6,8 +6,8 @@
 #define PROJECT1_L4_BANKEXTENSION2_SHOWLOGSCREEN_H
 
 #pragma once
-#include "clsScreen.h"
-#include "Manage_Users_Screen/clsUser.h"
+#include "../clsScreen.h"
+#include "../Manage_Users_Screen/clsUser.h"
 #include <iomanip>
 
 class  clsLoginRegisterScreen: public clsScreen
