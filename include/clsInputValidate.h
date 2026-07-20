@@ -7,7 +7,7 @@ using namespace std;
 
 class clsInputValidate {
 public:
-    template<typename T>
+    template <typename T>
     static bool IsNumberBetween(T Number, T from, T to) {
         if (Number >= from && Number <= to) return true;
         else return false;
