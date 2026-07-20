@@ -1,17 +1,17 @@
 #pragma once
 #include <iostream>
 #include "clsScreen.h"
-#include "clsInputValidate.h"
-#include "Clients screens/clsClientListScreen.h"
-#include "Clients screens/clsAddNewClientScreen.h"
-#include "Clients screens/clsDeleteClientScreen.h"
-#include "Clients screens/clsUpdateClientScreen.h"
-#include "Clients screens/clsFindClientScreen.h"
-#include "Transactions Screen/clsTransactionsScreen.h"
-#include "Manage_Users_Screen/clsManageUsersScreen.h"
-#include "Login_screens/clsLoginRegisterScreen.h"
-#include "Global.h"
-#include "P04 Currency Exchange/clsCurrencyExchangeMainScreen.h"
+#include "../Core/clsInputValidate.h"
+#include "Clients/clsClientListScreen.h"
+#include "Clients/clsAddNewClientScreen.h"
+#include "Clients/clsDeleteClientScreen.h"
+#include "Clients/clsUpdateClientScreen.h"
+#include "Clients/clsFindClientScreen.h"
+#include "Transactions/clsTransactionsScreen.h"
+#include "Users/clsManageUsersScreen.h"
+#include "Login/clsLoginRegisterScreen.h"
+#include "../Core/Global.h"
+#include "CurrencyExchange/clsCurrencyExchangeMainScreen.h"
 
 using namespace std;
 
@@ -179,7 +179,7 @@ public:
         cout << setw(37) << left << "" << "\t[4] Update Client Info.\n";
         cout << setw(37) << left << "" << "\t[5] Find Client.\n";
         cout << setw(37) << left << "" << "\t[6] Transactions.\n";
-        cout << setw(37) << left << "" << "\t[7] Manage Users.txt.\n";
+        cout << setw(37) << left << "" << "\t[7] Manage User.txt.\n";
         cout << setw(37) << left << "" << "\t[8] Login Register.\n";
         cout << setw(37) << left << "" << "\t[9] Currency Exchange.\n";
         cout << setw(37) << left << "" << "\t[10] Logout.\n";

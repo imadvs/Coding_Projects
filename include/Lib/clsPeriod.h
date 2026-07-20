@@ -7,7 +7,7 @@
 
 
 #pragma once
-#include "clsDate.h"
+#include "../Core/clsDate.h"
 
 class clsPeriod {
 public:
@@ -16,7 +16,7 @@ public:
 
     clsPeriod(clsDate StartDate, clsDate DateTo) {
         this->StartDate = StartDate;
-        this->EndDate = EndDate;
+        this->EndDate = DateTo;
     }
 
     static bool IsOverlapPeriods(clsPeriod Period1, clsPeriod Period2) {

@@ -7,7 +7,7 @@
 
 #pragma once
 #include <iostream>
-#include "Manage_Users_Screen/clsUser.h"
+#include "../Users/clsUser.h"
 clsUser CurrentUser=clsUser::Find("","");
 
 #endif //PROJECT1L4BANKEXTENSION2_GLOBAL_H
